@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="jdbcProp" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	 <!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		 <tx:attributes>
+		    <tx:method name="get*" read-only="true" />
+		    <tx:method name="delete*" />
+		</tx:attributes>
+	 </tx:advice> -->	 
+	 
+	 <!-- <aop:config>
+	    <aop:pointcut id="transactionPointcut" expression="execution(* com.project.bbs..*Dao.*(..))"/>
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" />
+	 </aop:config> -->	 
+	 
+	 <!-- <bean id="bbsDao" class="com.project.bbs.dao.BbsDao"/> -->
+
+</beans>

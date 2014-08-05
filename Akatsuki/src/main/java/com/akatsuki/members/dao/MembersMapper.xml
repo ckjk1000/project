@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.akatsuki.members.dao.MembersMapper">
+
+	<resultMap id="membersMap" type="com.akatsuki.members.dao.MembersVo">
+        <id     property="member_id"       	column="member_id" />
+        <result property="member_password" 	column="member_password" />
+        <result property="member_HP"   		column="member_HP" />
+        <result property="password_hint"   	column="password_hint" />
+    </resultMap>
+    
+    <insert id="insert">
+         INSERT INTO members ( 
+         	member_id
+           ,member_password
+           ,member_HP
+           ,password_hint
+         ) VALUES (
+            #{member_id}
+           ,#{member_password}
+           ,#{member_HP}
+           ,#{password_hint}
+         )
+    </insert>
+</mapper>
